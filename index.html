@@ -1,0 +1,35 @@
+---
+# You don't need to edit this file, it's empty on purpose.
+# Edit theme's home layout instead if you wanna make some changes
+# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
+layout: home
+---
+
+<h4 style="text-align: center;">
+  <a href="/">pjsk.</a>
+</h4>
+
+<div class="main-container">
+  <div class="main-profile">
+    <img class="main-profile-picture" src="/assets/images/main/iceland.jpg">
+    <h2> Peter K.</h2>
+    <h4 class="description"> traveler • engineer • skier • climber </h4>
+
+    <a class="fa-icon-link" href="https://github.com/pjskennedy"> <i class="fa fa-github-square"></i></a>
+    <a class="fa-icon-link" href="https://twitter.com/peterjskennedy"> <i class="fa fa-twitter-square"></i></a>
+    <a class="fa-icon-link" href="https://www.linkedin.com/in/peter-kennedy-94388046"> <i class="fa fa-linkedin-square"></i></a>
+  </div>
+</div>
+
+<div class="main-container">
+  <div class="post-list">
+    <ul class="post-list-table">
+      {% for post in site.posts %}
+        <li>
+          <span><a href="{{ post.url }}">{{ post.title }}</a></span>
+          <span class="margin-right: 0"><em>{{ post.date | date_to_string }}</em></span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

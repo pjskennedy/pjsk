@@ -1,0 +1,13 @@
+
+title: Your awesome title
+email: peterjskennedy@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Where I write about random things in my life.
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "http://pjsk.io" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: peterjskennedy
+github_username:  pjskennedy
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
