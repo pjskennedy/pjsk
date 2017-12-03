@@ -13,11 +13,18 @@ layout: home
         {{ page.title }}
       </div>
       <div class="post-date">
-        {{ page.date | date_to_string }}
+        {{ page.date | date: "%B %-d %Y" }}
       </div>
     </div>
 
     {{ content }}
 
+    <hr/>
+
+    <div class="footer">
+      <h4 style="text-align: center;">
+        <a href="/">View other posts.</a>
+      </h4>
+    </div>
   </div>
 </div>
