@@ -62,30 +62,38 @@ I then had to interface this with Twitter's API. Twitter has a great streaming A
 ```elixir
 defmodule Bernieflanders.Twitterstream do
   def stream(handles) do
-    # Given Twitter Handles, get Twitter IDs
-    userIds = handles
-    |> Enum.map(&(ExTwitter.user(&1)))
-    |> Enum.map(fn user -> user.id end)
+    IO.puts "Starting Twitter Stream"
+
+    userIds = twitterIds(handles)
 
     # Stream tweets from given user
     ExTwitter.stream_filter(follow: Enum.join(userIds, ","))
     # Filter tweets
     |> Stream.filter(&(filterTweet(&1, userIds)))
     # Expand tweets with REST Api
-    |> Stream.map(fn tweet -> ExTwitter.show(tweet.id, tweet_mode: "extended") end)
+    |> Stream.map(&(ExTwitter.show(&1.id, tweet_mode: "extended")))
     # Translate Tweet to Ned Flanders
-    |> Stream.map(fn %{full_text: text} -> Bernieflanders.Translator.translate(text) end)
+    |> Stream.map(&(Bernieflanders.Translator.translate(&1.full_text)))
     # Truncate Tweet to fit Twitter's Rules
-    |> Stream.map(fn translatedText -> String.slice(translatedText, 0..278) end)
+    |> Stream.map(&(String.slice(&1, 0..278)))
     # Tweet
-    |> Stream.map(fn translatedText -> ExTwitter.update(translatedText) end)
+    |> Stream.map(&(ExTwitter.update(&1)))
     |> Enum.to_list
   end
 
-  defp filterTweet(%{text: text, user: %{id: userId}}, userIds) do
-    Enum.member?(userIds, userId) && !String.starts_with?(text, "RT")
+  defp twitterIds(handles) do
+    handles
+    |> Enum.map(&(ExTwitter.user(&1)))
+    |> Enum.map(&(&1.id))
   end
 
+  # Remove retweets
+  defp filterTweet(%{text: "RT" <> _}, _), do: false
+
+  # Remove mentions and replies
+  defp filterTweet(%{user: %{id: id}}, userIds), do: Enum.member?(userIds, id)
+
+  # Remove anything else
   defp filterTweet(_, _), do: false
 end
 ```
