@@ -100,24 +100,23 @@ end
 
 ### The Application
 
-Surely, this module isn't perfect, but following Elixir's "Let it fail" methodology, let's wrap it in a [GenServer](https://hexdocs.pm/elixir/GenServer.html) and construct a supervisor to re-start the process if it fails.
+Surely, this module isn't perfect, but following Elixir's "Let it fail" methodology, let's kick the streaming module off in it's own process and have a supervisor observe it. If the stream fails at all, this supervisor will restart the process.
 
 ```elixir
 defmodule Bernieflanders.Server do
-  use GenServer
-
-  def start_link(list) do
-    GenServer.start_link(__MODULE__, list, name: __MODULE__)
+  def start_link(handles) do
+    pid = spawn_link(Bernieflanders.Twitterstream, :stream, handles)
+    {:ok, pid}
   end
 
-  def start_link do
-    GenServer.start_link(__MODULE__, [], name: __MODULE__)
-  end
-
-  def init(handles) do
-    # Create a new process to stream tweets
-    spawn_link(Bernieflanders.Twitterstream, :stream, [handles])
-    {:ok, handles}
+  def child_spec(opts) do
+    %{
+      id: __MODULE__,
+      start: {__MODULE__, :start_link, [opts]},
+      type: :worker,
+      restart: :permanent,
+      shutdown: 500
+    }
   end
 end
 
@@ -127,19 +126,12 @@ defmodule Bernieflanders do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    # Load Conifg
     :ok = ExTwitter.configure(Application.get_env(:extwitter, :oauth))
-    # Get twitter handles to stream
     handles = Application.get_env(:bernieflanders, :handles)
 
-    # Construct workers to supervise
-    children = [
-      worker(Bernieflanders.Server, [handles])
-    ]
-
-    # Start supervisor
-    opts = [strategy: :one_for_one, name: Bernieflanders.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link([
+      {Bernieflanders.Server, [handles]}
+    ], strategy: :one_for_one)
   end
 end
 ```
