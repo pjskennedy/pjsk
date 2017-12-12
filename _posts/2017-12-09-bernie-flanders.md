@@ -47,7 +47,7 @@ defmodule Bernieflanders.Translator do
 end
 ```
 
-This looks confusing, but you can see that it's mostly replacing words that start with _"de"_ to start with _"de-diddly-de"_. Ie, _"democrats"_ is replaced with _"de-diddly-democrats"_, suddenly it sounds much more friendly..
+This looks confusing, but you can see that it's mostly replacing words that start with _"de"_ to start with _"de-diddly-de"_. Ie, _"democrats"_ is replaced with _"de-diddly-democrats"_, suddenly it sounds much more friendly. An example: _"Well republicans and democrats"_ translates to _"Wel-diddly-ell riddly-republicans and de-diddly-democrats"_.
 
 ### The Streamer
 
