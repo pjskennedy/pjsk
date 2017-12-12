@@ -17,7 +17,7 @@ Create a twitter bot that tweets a [Ned Flanders](https://en.wikipedia.org/wiki/
 
 ### The Translator
 
-Before diving into the application itself, I need to write a "Ned Flanders" translator module in Elixir. Looking at common patterns in Ned's voice I came up with a series of regular expressions as a first attempt.
+Before diving into the application itself, I need to write a "Ned Flanders" translator module. Looking at common patterns in Ned's voice I came up with a series of regular expressions as a first attempt.
 
 ```elixir
 defmodule Bernieflanders.Translator do
@@ -51,7 +51,7 @@ This looks confusing, but you can see that it's mostly replacing words that star
 
 ### The Streamer
 
-I then had to interface this with Twitter's API. Twitter has a great streaming API where you can stream tweets given a set of criteria. Given Elixir's pipe-operator it was easy to accomplish all of this:
+I then interface this with Twitter's API. Twitter has a great streaming API where you can stream tweets given a set of criteria. Given Elixir's pipe-operator it was easy to accomplish all of this:
 
 1. Stream tweets from Twitter related to Bernie Sanders
 2. Filter the tweets to those written by Bernie (no re-tweets or replies)
@@ -143,6 +143,8 @@ defmodule Bernieflanders do
   end
 end
 ```
+
+And the glorious result, living on a raspberry pi in my living room is shown.
 
 <a class="twitter-timeline" href="https://twitter.com/bernflanders">Tweets by @bernflanders</a>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
