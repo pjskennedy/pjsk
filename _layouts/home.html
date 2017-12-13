@@ -4,30 +4,50 @@
 <html>
   <head>
 
+    <!-- Globals -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta property="og:type" content="article"/>
+    <meta property="twitter:card" content="summary"/>
+    <meta property="twitter:image" content="{{site.url}}/assets/images/main/iceland.jpg"/>
+    <meta property="og:image" content="{{site.url}}/assets/images/main/iceland.jpg"/>
+
+    <!-- Title related -->
     {% if page.title == null %}
-      <title>pjsk.</title>
+      <title>{{site.title}}.</title>
+      <meta property="og:title" content="{{site.title}}"/>
+      <meta property="twitter:title" content="{{site.title}}"/>
     {% else %}
-      <title>{{ page.title }} - pjsk</title>
+      <title>{{ page.title }} - {{site.title}}</title>
+      <meta property="og:title" content="{{page.title}} - {{site.title}}"/>
+      <meta property="twitter:title" content="{{page.title}} - {{site.title}}"/>
     {% endif %}
 
-    <meta name="description" content="I ramble about things, try to keep up.">
+    <!-- Description related -->
+    {% if page.description == null %}
+      <meta name="description" content="{{site.description}}">
+      <meta property="twitter:description" content="{{site.description}}"/>
+      <meta property="og:description" content="{{site.description}}"/>
+    {% else %}
+      <meta name="description" content="{{page.description}}">
+      <meta property="twitter:description" content="{{page.description}}"/>
+      <meta property="og:description" content="{{page.description}}"/>
+    {% endif %}
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <meta property="og:title" content="pjsk.io"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="http://pjsk.io/"/>
-    <meta property="og:description" content="I ramble about things, try to keep up."/>
-    <meta property="twitter:card" content="I ramble about things, try to keep up."/>
-    <meta property="twitter:url" content="http://pjsk.io/"/>
-    <meta property="twitter:title" content="pjsk."/>
-    <meta property="twitter:description" content="I ramble about things, try to keep up."/>
+    {% if page.url == null %}
+      <meta property="og:url" content="{{site.url}}"/>
+      <meta property="twitter:url" content="{{site.url}}"/>
+    {% else %}
+      <meta property="og:url" content="{{site.url}}{{page.url}}"/>
+      <meta property="twitter:url" content="{{site.url}}{{page.url}}"/>
+    {% endif %}
 
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/highlight.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="https://fonts.googleapis.com/css?family=Vollkorn" rel="stylesheet">
 
     {% include analytics.html %}
