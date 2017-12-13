@@ -2,6 +2,7 @@
 layout: post
 title:  "Bernie Flanders"
 date:   2017-12-09T19:00:00-08:00
+description: "Twitter bot to tweet Ned Flanders' tweets via Bernie Sanders"
 categories:
 ---
 

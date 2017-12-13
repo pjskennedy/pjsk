@@ -2,6 +2,7 @@
 layout: post
 title:  "Scala Case Class Hashcodes"
 date:   2017-11-22T19:00:00-08:00
+description: 'Scala case classes are weird.'
 categories:
 ---
 

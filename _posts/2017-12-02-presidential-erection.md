@@ -2,6 +2,7 @@
 layout: post
 title:  "2016 Presidential Erection"
 date:   2017-12-01T19:00:00-08:00
+description: "Chrome extension to replace all 'elections' with 'erections'"
 categories:
 ---
 
