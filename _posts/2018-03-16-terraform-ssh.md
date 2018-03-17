@@ -13,7 +13,9 @@ Both those solutions didn't seem very ... Terraform-y.
 #### Here's a pattern to generate SSH keys for your AWS project from within Terraform itself as a resource.
 Please note that this pattern applies (currently) to AWS projects. I'm sure it can easily be modified to work with other providers.
 
-First specify local variables for where the private and public key are going to exist, this is useful since they will be saved in the projects directory. Then generate the key pair to be used in our project.
+---
+
+Specify local variables for where the private and public key are going to exist, this is useful since they will be saved in the projects directory. Then generate the key pair to be used in our project.
 
 ```
 locals {
