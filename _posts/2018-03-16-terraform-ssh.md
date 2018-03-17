@@ -81,8 +81,8 @@ output "ssh_command" {
 Now when terraform finishes we see:
 
 ```
-aws_instance.vpn: Still creating... (1m10s elapsed)
-aws_instance.vpn: Creation complete after 1m11s (ID: i-0d6278c668086e45c)
+aws_instance.ssh_test: Still creating... (1m10s elapsed)
+aws_instance.ssh_test: Creation complete after 1m11s (ID: i-0d6278c668086e45c)
 
 Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 
