@@ -17,7 +17,7 @@ Please note that this pattern applies (currently) to AWS projects. I'm sure it c
 
 Specify local variables for where the private and public key are going to exist, this is useful since they will be saved in the projects directory. Then generate the key pair to be used in our project.
 
-```
+```terraform
 locals {
   public_key_filename  = "${path.root}/keys/id_rsa.pub"
   private_key_filename = "${path.root}/keys/id_rsa"
@@ -41,7 +41,7 @@ resource "local_file" "private_key_pem" {
 
 Now that we have our keys generated locally via Terraform, we need to record it in AWS to access in new EC2 instances.
 
-```
+```terraform
 resource "aws_key_pair" "generated" {
   key_name   = "pjsk-sshtest-${uuid()}"
   public_key = "${tls_private_key.generated.public_key_openssh}"
@@ -54,7 +54,7 @@ resource "aws_key_pair" "generated" {
 
 At this point, we should be able to provision EC2 machines and connect to them with our newly generated key.
 
-```
+```terraform
 resource "aws_instance" "ssh_test" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
@@ -73,7 +73,7 @@ resource "aws_instance" "ssh_test" {
 
 Now, you're probably thinking it's annoying to remember the path for the key and IP every-time you want to connect to this machine. Luckily Terraform outputs can get us out of this.
 
-```
+```terraform
 output "ssh_command" {
   description = "Command to use to SSH into the instance."
   value = "ssh -i ${local.private_key_filename} ubuntu@${aws_instance.ssh_test.public_ip}"
