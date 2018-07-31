@@ -6,7 +6,7 @@
 $background: #fff;
 $round: #fff;
 $secondary: #666;
-$icon: #000;
+$icon: #aa8;
 $icon-hover: #444;
 $white: #fff;
 
@@ -24,9 +24,9 @@ body {
 }
 
 .fa-icon-link {
-  size: 30px;
-  color: $icon;
+  color: #000;
   text-decoration: none;
+  padding: 3px;
 }
 
 .fa-icon-link:hover {
