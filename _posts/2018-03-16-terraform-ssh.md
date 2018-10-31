@@ -69,7 +69,9 @@ resource "aws_instance" "ssh_test" {
 }
 ```
 
-<img src="/assets/images/terraform-ssh-keys/ssh.png" style="max-width: 100%;">
+<div style="text-align:center">
+  <img src="/assets/images/terraform-ssh-keys/ssh.png" style="max-width: 600px;">
+</div>
 
 Now, you're probably thinking it's annoying to remember the path for the key and IP every-time you want to connect to this machine. Luckily Terraform outputs can get us out of this.
 
