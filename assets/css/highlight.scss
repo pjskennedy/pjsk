@@ -71,6 +71,12 @@
 .highlight .gd { color: #f0509a; } /* Generic.Deleted & Diff Deleted */
 .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 
+code.highlighter-rouge {
+  background-color: #443;
+  padding: 2px;
+  border-radius: 2px;
+}
+
 pre {
   padding: 10px;
   white-space: pre-wrap;
