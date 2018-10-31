@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 3.8.3"
+gem "jekyll", "3.8.4"
 
 # Using this commit, it has the HCL/Terraform syntax highlighting
-gem "rouge", git: "git@github.com:jneen/rouge.git", ref: "11aaec03cd9a7c878d9b30ac0b89689dd62b1a9c"
+gem "rouge", "3.3.0"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
