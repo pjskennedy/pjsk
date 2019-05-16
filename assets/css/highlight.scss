@@ -6,8 +6,8 @@
  * Taken from: https://github.com/jwarby/jekyll-pygments-themes/blob/master/monokai.css
  * see Rouge / redcarpet documentation.
  */
-.highlight pre { background-color: #272822; }
-.highlight .hll { background-color: #272822; }
+.highlight pre { background-color: #332; }
+.highlight .hll { background-color: #332; }
 .highlight .c { color: #75715e } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */
 .highlight .k { color: #66d9ef } /* Keyword */
@@ -72,7 +72,7 @@
 .highlight .gi { color: #a6e22e; } /* Generic.Inserted & Diff Inserted */
 
 code.highlighter-rouge {
-  background-color: #443;
+  background-color: #332;
   padding: 2px;
   border-radius: 2px;
 }
