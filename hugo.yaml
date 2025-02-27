@@ -1,3 +1,18 @@
-baseURL: https://example.org/
+baseURL: https://pjsk.io/
 languageCode: en-us
-title: My New Hugo Site
+title: 
+theme: ["PaperMod"]
+params: 
+    custom_css: ["css/main.scss"]
+    defaultTheme: auto
+    homeInfoParams:
+        Title: pjsk.io
+        Content: |
+          Welcome to my useless corner of the internet. There's nothing here, nor are there reasons for you to have made it here.
+
+          I study graph theory, read books, and write code. When I'm not doing that, I'm probably doing other things instead.
+    socialIcons: # optional
+        - name: linkedin
+          url: https://www.linkedin.com/in/peter-kennedy-94388046
+        - name: github
+          url: https://github.com/pjskennedy
